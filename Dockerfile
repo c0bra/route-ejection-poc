@@ -6,7 +6,6 @@ ENV APP ${app}
 RUN apt-get -y update \
 	&& apt-get install -y git
 
-# Only for app-new
 RUN if [ "$APP" = "new" ]; then \
       yarn global add @vue/cli -g ; \
     else \
@@ -28,5 +27,4 @@ EXPOSE 8080
 
 USER node
 
-# switch to npm if you chose it as package manager
 CMD ["yarn", "serve"]

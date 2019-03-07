@@ -1,15 +1,16 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <router-view/>
+    <h1>Old App</h1>
+    <p>
+      <!-- use v-link directive for navigation. -->
+      <a v-link="{ path: '/' }">Home</a> | 
+      <a v-link="{ path: '/page1' }">Page 1</a> | 
+      <a v-link="{ path: '/new-app/page1' }">New App</a>
+    </p>
+    <!-- route outlet -->
+    <router-view></router-view>
   </div>
 </template>
-
-<script>
-export default {
-  name: 'App',
-};
-</script>
 
 <style>
 #app {
