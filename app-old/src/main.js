@@ -10,15 +10,6 @@ function RouteEjector(transition) {
   window.location = `http://localhost:8081/#/${transition.to.params.path}`
 }
 
-const routes = [
-  { path: '/', component: Home },
-  { path: '/page1', component: Page1 },
-  {
-    path: '/new-app',
-    canActivate: RouteEjector,
-  }
-]
-
 const router = new VueRouter()
 
 router.map({
