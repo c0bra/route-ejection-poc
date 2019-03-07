@@ -5,19 +5,20 @@ services:
     build:
       context: ./
       args:
-        appdir: "/app-new"
+        app: "new"
     ports:
       - "8081:8080"
     environment:
       OTHER_APP: "app-old:8080"
 
-  # app-old:
-  #   build:
-  #     context: ./
-  #     args:
-  #       appdir: "/app-old"
-  #   ports:
-  #     - "8082:8080"
-  #   environment:
-  #     OTHER_APP: "app-old:8080"
+  app-old:
+    build:
+      context: ./
+      args:
+        app: "old"
+    entrypoint: yarn start
+    ports:
+      - "8082:8080"
+    environment:
+      OTHER_APP: "app-new:8080"
 

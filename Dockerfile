@@ -1,19 +1,21 @@
-FROM node:10
+FROM node:10-slim
 
-ARG appdir
-ENV APPDIR ${appdir}
+ARG app
+ENV APP ${app}
 
 RUN apt-get -y update \
 	&& apt-get install -y git
 
 # Only for app-new
-RUN if [ "$APPDIR" = "/app-new" ]; then \
+RUN if [ "$APP" = "new" ]; then \
       yarn global add @vue/cli -g ; \
     else \
       yarn global add vue-cli ; \
     fi
 
-WORKDIR ${appdir}
+COPY ./app-${app} /app
+
+WORKDIR /app
 
 RUN apt-get autoremove -y \
     && apt-get autoclean -y \
